@@ -248,22 +248,6 @@ def apply_date_range_search(driver):
 def setup_driver():
     options = Options()
 
-    # Headless when running in CI or when HEADLESS env var is set to 1/true
-    headless_env = os.getenv("HEADLESS", "true").lower()
-    is_headless = headless_env in ("1", "true", "yes", "on") or os.getenv("GITHUB_ACTIONS")
-
-    if is_headless:
-        # Use new headless mode when available
-        options.add_argument("--headless=new")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--window-size=1920,1080")
-        options.add_argument("--disable-extensions")
-        options.add_argument("--disable-software-rasterizer")
-        options.add_argument("--remote-allow-origins=*")
-    else:
-        options.add_argument("--start-maximized")
 
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-popup-blocking")
