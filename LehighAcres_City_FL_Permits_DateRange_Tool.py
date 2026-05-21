@@ -248,16 +248,38 @@ def apply_date_range_search(driver):
 def setup_driver():
     options = Options()
 
+    # STABLE HEADLESS MODE
+    options.add_argument("--headless=new")
+
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
 
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-popup-blocking")
     options.add_argument("--disable-blink-features=AutomationControlled")
 
-    # Create driver using webdriver-manager so CI doesn't need preinstalled chromedriver
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
-    return driver
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-software-rasterizer")
 
+    options.add_argument("--remote-debugging-port=9222")
+    options.add_argument("--remote-allow-origins=*")
+
+    options.add_argument(
+        "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/137.0.0.0 Safari/537.36"
+    )
+
+    service = Service(ChromeDriverManager().install())
+
+    driver = webdriver.Chrome(
+        service=service,
+        options=options
+    )
+
+    return driver
 
 # =========================================================
 # EXCEL
