@@ -41,8 +41,8 @@ WAIT_TIME = int(os.getenv("WAIT_TIME", "30"))
 SEARCH_INPUT_ID = "ctl00_PlaceHolderMain_generalSearchForm_txtGSPermitNumber"
 SEARCH_BUTTON_XPATH = '//*[@id="ctl00_PlaceHolderMain_btnNewSearch"]'
 
-START_DATE = os.getenv("START_DATE", "04/21/2026")
-END_DATE = os.getenv("END_DATE", "04/25/2026")
+START_DATE = os.getenv("START_DATE", "04/26/2026")
+END_DATE = os.getenv("END_DATE", "04/31/2026")
 
 DATE_FROM_SELECTORS = [
     (By.ID, "ctl00_PlaceHolderMain_generalSearchForm_txtGSFromDate"),
